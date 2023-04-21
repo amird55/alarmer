@@ -14,7 +14,8 @@ router.get('/SaveDummy', (req, res) => {
     res.send('Saved Dummy');
 });
 router.get('/Add',(req, res) => {
-    res.render("roomAdd", {pageTitle:"הוספת חדר"
+    res.render("roomAdd", {pageTitle:"הוספת חדר",
+        item:{}
     });
 });
 router.post('/Add',(req, res) => {
@@ -31,5 +32,11 @@ router.get('/List',async (req, res) => {
     let room_data=await roomModel.find();
     res.render("roomList", {pageTitle:"ניהול חדרים",
         data:room_data
+    });
+});
+router.get('/Edit',async (req, res) => {
+    let item_data=await roomModel.findById(req.query.id);
+    res.render("roomAdd", {pageTitle:"עריכת חדר",
+        item:item_data
     });
 });
