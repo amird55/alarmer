@@ -27,4 +27,9 @@ router.post('/Add',(req, res) => {
     modelData.save();
     res.send('Saved ');
 });
-
+router.get('/List',async (req, res) => {
+    let room_data=await roomModel.find();
+    res.render("roomList", {pageTitle:"ניהול חדרים",
+        data:room_data
+    });
+});

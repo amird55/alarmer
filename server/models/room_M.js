@@ -16,6 +16,10 @@ const dataSchema = new mongoose.Schema({
     device_number: {
         required: false,
         type: Number
+    },
+    CallIsActive: {
+        required: false,
+        type: Number
     }
 })
 

@@ -1,0 +1,27 @@
+<%- include ("header.ejs") %>
+<%- include ("menu.ejs") %>
+<main>
+    <table>
+        <tr>
+            <th></th>
+            <th>מספר חדר</th>
+            <th>מספר מיטה</th>
+            <th>שם דייר/ת</th>
+            <th>מספר מכשיר</th>
+            <th>כפתור פעיל</th>
+            <th></th>
+        </tr>
+        <% for(let item of data) { %>
+            <tr>
+                <td></td>
+                <td><%= item.room_number %></td>
+                <td><%= item.bed_number %></td>
+                <td><%= item.dayar_name %></td>
+                <td><%= item.device_number %></td>
+                <td><%= item.CallIsActive %></td>
+                <td></td>
+            </tr>
+        <% } %>
+    </table>
+</main>
+<%- include ("footer.ejs") %>
