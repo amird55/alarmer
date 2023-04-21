@@ -41,3 +41,7 @@ router.post('/Edit',async (req, res) => {
     let item_data=await roomModel.findByIdAndUpdate(req.query.id,modelData);
     res.redirect("/R/List");
 });
+router.post('/Delete',async (req, res) => {
+    let item_data=await roomModel.findByIdAndDelete(req.body.id);
+    res.redirect("/R/List");
+});

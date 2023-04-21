@@ -31,7 +31,13 @@
                 <td><%= item.dayar_name %></td>
                 <td><%= item.device_number %></td>
                 <td><%= item.CallIsActive %></td>
-                <td></td>
+                <td>
+                    <form action="/R/Delete" method="post"
+                          onsubmit="return confirm('נא לאשר מחיקה' );return false;">
+                        <input type="hidden" name="id" value="<%= item._id %>">
+                        <button>מחיקה</button>
+                    </form>
+                </td>
             </tr>
         <% } %>
     </table>
