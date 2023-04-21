@@ -4,15 +4,6 @@ module.exports = router;
 
 const roomModel=require("../models/room_M");
 
-router.get('/SaveDummy', (req, res) => {
-    const modelData = new roomModel({
-        room_number:15,
-        bed_number:1,
-        dayar_name:"amir"
-    });
-    modelData.save();
-    res.send('Saved Dummy');
-});
 router.get('/Add',(req, res) => {
     res.render("roomAdd", {pageTitle:"הוספת חדר",
         item:{}
@@ -39,4 +30,14 @@ router.get('/Edit',async (req, res) => {
     res.render("roomAdd", {pageTitle:"עריכת חדר",
         item:item_data
     });
+});
+router.post('/Edit',async (req, res) => {
+    const modelData = {
+        room_number:req.body.room_number,
+        bed_number:req.body.bed_number,
+        dayar_name:req.body.dayar_name,
+        device_number:req.body.device_number
+    };
+    let item_data=await roomModel.findByIdAndUpdate(req.query.id,modelData);
+    res.redirect("/R/List");
 });
