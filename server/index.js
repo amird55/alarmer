@@ -26,6 +26,9 @@ database.once('connected', () => {
 //--- connecting routers ------------------------
 const rooms_rtr = require('./routes/rooms_R');
 app.use('/R', rooms_rtr);
+const calls_rtr=require('./routes/calls_R');
+app.use('/C', calls_rtr);
+
 //------------------------------------------------
 app.listen(port, () => {            //server starts listening for any attempts from a client to connect at port: {port}
     console.log(`Now listening on port ${port}`);
