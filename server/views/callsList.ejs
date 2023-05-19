@@ -1,0 +1,45 @@
+<%- include ("header.ejs") %>
+<%- include ("menu.ejs") %>
+<main>
+    <table>
+        <tr>
+            <td colspan="100">
+                <form action="/C/Add" method="get">
+                    <button>+הוספה</button>
+                </form>
+            </td>
+        </tr>
+        <tr>
+            <th></th>
+            <th>שם דייר/ת</th>
+            <th>מספר חדר</th>
+            <th>מספר מיטה</th>
+            <th>מועד פתיחה</th>
+            <th>מועד סגירה</th>
+            <th></th>
+        </tr>
+        <% for(let item of data) { %>
+            <tr>
+                <td>
+                    <form action="/C/Edit" method="get">
+                        <input type="hidden" name="id" value="<%= item._id %>">
+                        <button>ערוך</button>
+                    </form>
+                </td>
+                <td><%= Dayarim[`${item.room_number}_${item.bed_number}`] %></td>
+                <td><%= item.room_number %></td>
+                <td><%= item.bed_number %></td>
+                <td><%= item.callStartTime %></td>
+                <td><%= item.callEndTime %></td>
+                <td>
+                    <form action="/C/Delete" method="post"
+                          onsubmit="return confirm('נא לאשר מחיקה' );return false;">
+                        <input type="hidden" name="id" value="<%= item._id %>">
+                        <button>מחיקה</button>
+                    </form>
+                </td>
+            </tr>
+        <% } %>
+    </table>
+</main>
+<%- include ("footer.ejs") %>
