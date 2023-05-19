@@ -23,6 +23,7 @@ database.once('connected', () => {
     console.log('Database Connected');
 })
 
+require("./gen_func");
 //--- connecting routers ------------------------
 const rooms_rtr = require('./routes/rooms_R');
 app.use('/R', rooms_rtr);

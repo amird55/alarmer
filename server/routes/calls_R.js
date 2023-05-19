@@ -25,8 +25,14 @@ router.get('/List',async (req, res) => {
     for(let item of room_data){
         Dayarim[`${(await item).room_number}_${(await item).bed_number}`]=(await item).dayar_name;
     }
-    console.log("router",Dayarim)
-    let calls_data=await callsModel.find();
+    // console.log("router",Dayarim)
+    let searchTerm={}
+    if(req.query.CallType=='all') {
+        searchTerm = {};
+    }else{
+        searchTerm.callEndTime='';
+    }
+    let calls_data=await callsModel.find(searchTerm);
     res.render("callsList", {pageTitle:"ניהול קריאות",
         Dayarim:Dayarim,
         data:calls_data
