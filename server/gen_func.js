@@ -10,4 +10,4 @@ function getTimeStamp(){
 
     return today+" "+currTime;
 }
-
+exports.getTimeStamp=getTimeStamp;

@@ -23,12 +23,13 @@ database.once('connected', () => {
     console.log('Database Connected');
 })
 
-require("./gen_func");
 //--- connecting routers ------------------------
 const rooms_rtr = require('./routes/rooms_R');
 app.use('/R', rooms_rtr);
 const calls_rtr=require('./routes/calls_R');
 app.use('/C', calls_rtr);
+const api_rtr=require('./routes/api_R');
+app.use('/API', api_rtr);
 
 //------------------------------------------------
 app.listen(port, () => {            //server starts listening for any attempts from a client to connect at port: {port}
